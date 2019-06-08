@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/vendor/fontawesome/css/font-awesome.css";
+@import "assets/vendor/metisMenu/dist/metisMenu.css";
+@import "assets/vendor/animate.css/animate.css";
+@import "assets/vendor/bootstrap/dist/css/bootstrap.css";
+@import "assets/vendor/bootstrap-rtl/dist/css/bootstrap-rtl.css";
+@import "assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css";
+@import "assets/fonts/pe-icon-7-stroke/css/helper.css";
+@import "assets/styles/style-rtl.css";
