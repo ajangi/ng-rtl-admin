@@ -1,7 +1,14 @@
-<app-header></app-header>
-<app-menu></app-menu>
-<div id="wrapper">
-  <div class="content">
-    <router-outlet></router-outlet>
+<div *ngIf="authorized">
+  <app-header></app-header>
+  <app-menu></app-menu>
+  <div id="wrapper">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<div *ngIf="!authorized">
+  <div id="login-wrapper">
+    <app-auth></app-auth>
   </div>
 </div>

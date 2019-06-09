@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MainConstants } from "../../common/mainConstants";
+import { MainConstants } from "../../../common/mainConstants";
 
 @Component({
   selector: "app-header",

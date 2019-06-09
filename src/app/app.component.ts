@@ -7,5 +7,6 @@ import { MainConstants } from '../common/mainConstants'
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = MainConstants.APP_NAME;
+  title : string = MainConstants.APP_NAME;
+  authorized : boolean = true;
 }
