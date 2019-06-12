@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { MainConstants } from '../common/mainConstants'
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: "app-root",
@@ -7,6 +9,10 @@ import { MainConstants } from '../common/mainConstants'
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+  constructor(private router: Router, private authService:AuthService){
+  }
   title : string = MainConstants.APP_NAME;
-  authorized : boolean = true;
+  public isAuthed(){
+    return this.authService.isLogedIn();
+  }
 }

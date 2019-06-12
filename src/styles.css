@@ -7,3 +7,9 @@
 @import "assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css";
 @import "assets/fonts/pe-icon-7-stroke/css/helper.css";
 @import "assets/styles/style-rtl.css";
+@import "assets/styles//toast.css";
+
+.errorToastBody{
+    background-color: red;
+
+}

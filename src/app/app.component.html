@@ -1,4 +1,4 @@
-<div *ngIf="authorized">
+<div *ngIf="isAuthed()">
   <app-header></app-header>
   <app-menu></app-menu>
   <div id="wrapper">
@@ -7,8 +7,10 @@
     </div>
   </div>
 </div>
-<div *ngIf="!authorized">
+<div *ngIf="!isAuthed()">
   <div id="login-wrapper">
-    <app-auth></app-auth>
+    <div class="login-container">
+      <app-auth></app-auth>
+    </div>
   </div>
 </div>

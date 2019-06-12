@@ -5,7 +5,6 @@ import { AuthComponent } from 'src/app/components/auth/auth.component';
 
 const routes: Routes = [
   {path : "requests/pickup", component: PickupComponent},
-  {path : "login", component : AuthComponent}
 ];
 
 @NgModule({
