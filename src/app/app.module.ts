@@ -13,6 +13,7 @@ import { PickupComponent } from './components/requests/pickup/pickup.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     RequestsModule,
     AuthModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

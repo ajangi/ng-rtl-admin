@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MainConstants } from "../../../common/mainConstants";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: "app-header",
@@ -8,7 +9,10 @@ import { MainConstants } from "../../../common/mainConstants";
 })
 export class HeaderComponent implements OnInit {
   headerTitle: string = MainConstants.APP_NAME;
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
+  private logout(){
+    this.authService.logOut();
+  }
 }

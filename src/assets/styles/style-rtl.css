@@ -4561,3 +4561,6 @@ pre{
     left: 3px !important;
 	right: auto !important;
 }
+.center{
+  text-align: center
+}

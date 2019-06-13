@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from './../../environments/environment'
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-  apiURL : string = "https://backend.tinextco.com";
+  apiURL : string = environment.baseurl
   constructor(private httpClient: HttpClient, private toastService: ToastrService){
 
   }
@@ -17,7 +18,8 @@ export class HttpService {
 
   public post(uri: string, data: Object, headers:Object){
     let fullUrl : string = this.getFullUrl(uri);
-    return this.httpClient.post(uri, data,headers)
+    let fullHeaders : Object = this.makePostHeaders();
+    return this.httpClient.post(fullUrl, data,fullHeaders)
     .toPromise()
     .then((res) => res)
     .catch((error) => {
@@ -32,5 +34,16 @@ export class HttpService {
       timeOut: 10000,
       closeButton : true
     });
+  }
+
+  public getToken(){
+    return "Bearer "+localStorage.getItem('token');
+  }
+  
+  private makePostHeaders(){
+    const httpOptions = {
+      headers: new HttpHeaders({"Authorization" : this.getToken(), "content-type" : "application/json"})
+    };
+    return httpOptions
   }
 }

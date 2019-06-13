@@ -2,28 +2,20 @@
   <div class="col-md-12">
       <div class="text-center m-b-md">
           <h3>لطفا وارد سایت شوید</h3>
-          <small>این بهترین اپلیکیشن وب است.</small>
       </div>
       <div class="hpanel">
           <div class="panel-body">
-                  <form action="#" id="loginForm">
+                  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
                       <div class="form-group">
                           <label class="control-label" for="username">نام کاربری</label>
-                          <input type="text" placeholder="example@gmail.com" title="نام کاربری خود را وارد کنید" required="" value="" name="username" id="username" class="form-control">
-                          <span class="help-block small">نام کاربری شما یکتا باشد.</span>
+                          <input type="email" placeholder="example@gmail.com" title="نام کاربری خود را وارد کنید" name="username" [(ngModel)]="username" required class="form-control">
                       </div>
                       <div class="form-group">
                           <label class="control-label" for="password">رمز عبور</label>
-                          <input type="password" title="رمز عبور خود را وارد کنید" placeholder="******" required="" value="" name="password" id="password" class="form-control">
-                          <span class="help-block small">رمز شما قدرتمند است</span>
+                          <input type="password" title="رمز عبور خود را وارد کنید" placeholder="******" name="password" [(ngModel)]="password" required class="form-control">
                       </div>
-                      <div class="checkbox">
-                          <input type="checkbox" class="i-checks" checked>
-                               مرا بخاطر بسپار
-                          <p class="help-block small">(اگر این کامپیوتر خصوصی شماست)</p>
-                      </div>
-                      <button class="btn btn-success btn-block">ورود</button>
-                      <a class="btn btn-default btn-block" href="#">ثبت نام</a>
+                      <button class="btn btn-success btn-block" *ngIf="!authService.isLogingIn">ورود</button>
+                      <div class="center" *ngIf="authService.isLogingIn">لطفا شکیبا باشید</div>
                   </form>
           </div>
       </div>
