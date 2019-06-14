@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "ngx-toastr": "^10.0.4",

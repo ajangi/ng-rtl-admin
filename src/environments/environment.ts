@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseurl: 'http://192.168.140.111:8080',
+  baseurl: 'https://backend.tinextco.com',
   socketurl: 'https://backend.tinextco.com:6001'
 };
 

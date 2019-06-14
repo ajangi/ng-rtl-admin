@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DriversService } from 'src/app/services/drivers.service';
 
 @Component({
   selector: 'app-pickup',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pickup.component.css']
 })
 export class PickupComponent implements OnInit {
-
-  constructor() { }
+  driversList : Object = {}
+  constructor(private driversService: DriversService) { }
 
   ngOnInit() {
+    let dd = this.driversService.getDrivers().then((res) => {
+      if(res){
+        this.driversList = res['data']
+      }
+    })
   }
 
 }

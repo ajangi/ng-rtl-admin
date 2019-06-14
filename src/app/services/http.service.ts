@@ -28,6 +28,18 @@ export class HttpService {
     })
   }
 
+  public get(uri: string, headers: Object){
+    let fullUrl: string = this.getFullUrl(uri);
+    let fullHeaders: Object = this.makePostHeaders();
+    return this.httpClient.get(fullUrl,fullHeaders)
+      .toPromise()
+      .then((res) => res)
+      .catch((error) => {
+        this.showError('خطا!', error['error']['message'])
+        return false;
+      })
+  }
+
   private showError(title: string, message: string){
     this.toastService.error(message,title,{
       progressBar : true,

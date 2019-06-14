@@ -41,7 +41,7 @@ export class AuthService {
       if(response){
         localStorage.removeItem('token');
         localStorage.removeItem("expires_at");
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
       }
     })
   }

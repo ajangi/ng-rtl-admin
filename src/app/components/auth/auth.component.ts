@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -8,11 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   username: string = '';
   password: string = '';
 
   ngOnInit() {
+    if(this.router.url == '/login' && this.authService.isLogedIn()){
+      this.router.navigate(['dashboard'])
+    }
   }
   public login(form: any) {
     let formValue : Object = form.value;
