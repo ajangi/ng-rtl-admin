@@ -15,7 +15,7 @@
                           <input type="password" title="رمز عبور خود را وارد کنید" placeholder="******" name="password" [(ngModel)]="password" required class="form-control">
                       </div>
                       <button class="btn btn-success btn-block" *ngIf="!authService.isLogingIn">ورود</button>
-                      <div class="center" *ngIf="authService.isLogingIn">لطفا شکیبا باشید</div>
+                      <div class="center loading" *ngIf="authService.isLogingIn">لطفا شکیبا باشید</div>
                   </form>
           </div>
       </div>

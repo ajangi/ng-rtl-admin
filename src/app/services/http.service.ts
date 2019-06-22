@@ -40,8 +40,15 @@ export class HttpService {
       })
   }
 
-  private showError(title: string, message: string){
+  public showError(title: string, message: string){
     this.toastService.error(message,title,{
+      progressBar : true,
+      timeOut: 10000,
+      closeButton : true
+    });
+  }
+  public showWarning(title: string, message: string){
+    this.toastService.warning(message,title,{
       progressBar : true,
       timeOut: 10000,
       closeButton : true

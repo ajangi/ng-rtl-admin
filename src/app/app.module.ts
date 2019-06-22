@@ -14,6 +14,8 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Select2Module } from 'ng2-select2';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     AuthModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Select2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

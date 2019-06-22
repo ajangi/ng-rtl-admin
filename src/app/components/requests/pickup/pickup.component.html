@@ -9,7 +9,7 @@
         ایجاد مسیر جمع آوری
       </div>
       <div class="panel-body">
-        <table id="example2" class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover">
           <thead>
             <tr>
               <th class="center">#</th>
@@ -22,30 +22,55 @@
               <th class="center">نوع مشتری</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="center loading" *ngIf="gettingPickUpList">
             <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011/04/25</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
+              <td colspan="8">لطفا شکیبا باشید</td>
+            </tr>
+          </tbody>
+          <tbody class="center empty-list" *ngIf="!gettingPickUpList && (pickUpList.length == 0)">
+            <tr>
+              <td colspan="8">موردی یافت نشد.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="!gettingPickUpList && (pickUpList.length > 0)">
+            <tr *ngFor="let item of pickUpList; let i = index">
+              <td class="center"><input type="checkbox" [checked]="item['isSelected']" name="list_name" value="{{i}}" (change)="changeRefOrderSelection(i)"/></td>
+              <td class="center">{{ item['deliver_timespan'] }}</td>
+              <td class="center">{{ item['corporate']['name'] }}</td>
+              <td class="bold center">{{ item['code'] }}</td>
+              <td>{{ item['depot']['address'] }}</td>
+              <td class="center">{{ item['actual_orders_count'] }}</td>
+              <td class="center">{{ item['driver_name'] }}</td>
+              <td class="center">{{ item['corporate']['type'] }}</td>
             </tr>
             <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011/04/25</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
+              <td colspan="8" class="center">
+                  <ul class="pagination no-margin">
+                      <li class="paginate_button previous" *ngIf="pickUpListMeta['pagination']['current_page'] > 1">
+                          <a (click)="getPickUpList(pickUpListMeta['pagination']['current_page'] -1)">قبلی</a>
+                      </li>
+                      
+                      <li class="paginate_button" *ngFor="let item of [].constructor(pickUpListMeta['pagination']['total_pages']); let i = index" [ngClass]="{'active': ((i + 1) == pickUpListMeta['pagination']['current_page'])}">
+                        <a (click)="getPickUpList(i + 1)">{{i + 1}}</a>
+                      </li>
+                      <li class="paginate_button next" *ngIf="pickUpListMeta['pagination']['current_page'] < pickUpListMeta['pagination']['total_pages']">
+                          <a (click)="getPickUpList(pickUpListMeta['pagination']['current_page'] + 1)">بعدی</a>
+                      </li>
+                    </ul>
+              </td>
             </tr>
           </tbody>
         </table>
-
+        <div *ngIf="driversList" class="form-group">
+            <div class="col-sm-7 left">
+                <div class="input-group m-b">
+                  <span class="input-group-addon bold">انتخاب راننده</span>
+                  <select2 class="" [data]="driversList" (valueChanged)="changedDriver($event)"></select2>
+                </div>
+                <button class="btn btn-primary left out-free" (click)="makeCollectRoute()">ثبت نهایی</button>
+                <button class="btn btn-primary left out-free" (click)="assignToSend()">تخصیص پیک</button>
+            </div>
+          </div>
       </div>
     </div>
   </div>
